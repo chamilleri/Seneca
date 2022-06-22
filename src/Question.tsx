@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./Question.scss";
 import { Toggle } from "./Toggle";
 import { Question as QuestionType } from "./types/Quiz";
-// import * as quiz from "./quiz.json";
 import classNames from "classnames";
 
 type AnswerCorrection = {
