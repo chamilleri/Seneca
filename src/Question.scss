@@ -1,11 +1,11 @@
 @use "mixins";
 
-@property --grad_top {
+@property --grad-top {
   syntax: '<color>';
   inherits: false;
   initial-value: rgb(220, 220, 220);
 }
-@property --grad_bottom {
+@property --grad-bottom {
   syntax: '<color>';
   inherits: false;
   initial-value: rgb(150, 150, 150);
@@ -22,28 +22,29 @@
   height: 100vh;
   scroll-snap-align: center;
   flex: none;
-  background: linear-gradient(180deg, var(--grad_top) 0%, var(--grad_bottom) 100%);
-  transition: --grad_top 0.3s ease-in, --grad_bottom 0.3s ease-in;
+  background-color: var(--grad-top, rgb(220, 220, 220));
+  background-image: linear-gradient(180deg, var(--grad-top, rgb(220, 220, 220)) 0%, var(--grad-bottom, rgb(150, 150, 150)) 100%);
+  transition: --grad-top 0.3s ease-in, --grad-bottom 0.3s ease-in;
 
   &--correct {
-    --grad_top:#76E0C2;
-    --grad_bottom:#59CADA;
+    --grad-top:#76E0C2;
+    --grad-bottom:#59CADA;
     pointer-events: none;
   }
 
   &--wrong_lv1 {
-    --grad_top:rgb(223, 217, 132);
-    --grad_bottom:rgb(223, 177, 78);
+    --grad-top:rgb(223, 217, 132);
+    --grad-bottom:rgb(223, 177, 78);
   }
 
   &--wrong_lv2 {
-    --grad_top:#F6B868;
-    --grad_bottom:#EE6B2D;
+    --grad-top:#F6B868;
+    --grad-bottom:#EE6B2D;
   }
 
   &--wrong_lv3 {
-    --grad_top:#F1B496;
-    --grad_bottom:#EA806A;
+    --grad-top:#F1B496;
+    --grad-bottom:#EA806A;
   }
   
   &__title {

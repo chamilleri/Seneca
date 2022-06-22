@@ -21,13 +21,13 @@
     margin-top: 24px;
   }
 
-  --no_of_options: 1;  
+  --no-of-options: 1;  
 
   &:before {
     position: absolute;
     border-radius: 100px;
     background-color: $border-color;
-    width: calc(100% / var(--no_of_options));
+    width: calc(100% / var(--no-of-options));
     height: 100%;
     z-index: 0;
     left:0;
@@ -37,12 +37,12 @@
   // Catering for multiple options up to the maximum options set
   $max-options: 5;
   @for $i from 0 through $max-options {
-    &[data-count="#{$i}"] { --no_of_options: #{$i}; }
+    &[data-count="#{$i}"] { --no-of-options: #{$i}; }
 
     &--#{$i} {
       &:before {
         content:"";
-        left: calc(100% / var(--no_of_options) * #{$i});
+        left: calc(100% / var(--no-of-options) * #{$i});
       }
     }
   } 
@@ -64,14 +64,14 @@
   @media screen and (max-width: 320px){
     flex-direction: column;
     border-radius: 24px ;
-    height: calc(48px * var(--no_of_options));
+    height: calc(48px * var(--no-of-options));
     justify-content: space-evenly;
 
     &:before {
       position: absolute;
       background-color: $border-color;
       width: 100%;
-      height: calc(100% / var(--no_of_options));
+      height: calc(100% / var(--no-of-options));
       z-index: 0;
       left:0;
       top:0;
@@ -81,19 +81,19 @@
     // Catering for multiple options up to the maximum options set
     $max-options: 5;
     @for $i from 0 through $max-options {
-      &[data-count="#{$i}"] { --no_of_options: #{$i}; }
+      &[data-count="#{$i}"] { --no-of-options: #{$i}; }
 
       &--#{$i} {
         &:before {
           $border-radius: 20px;
           content:"";
           left: 0;
-          top: calc(100% / var(--no_of_options) * #{$i});
+          top: calc(100% / var(--no-of-options) * #{$i});
           //setting border according to the selected position
           @if $i == 0 {
             border-radius: $border-radius $border-radius 0 0;
           } @else {
-            --floor: calc((#{$i + 1} / var(--no_of_options)) - 0.5);
+            --floor: calc((#{$i + 1} / var(--no-of-options)) - 0.5);
             $border-radius-calc: calc(#{$border-radius} * var(--floor)); 
             border-radius: 0 0 $border-radius-calc $border-radius-calc;
           }
