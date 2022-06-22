@@ -1,0 +1,108 @@
+@use "mixins";
+
+@property --floor {
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: false
+}
+
+.toggle {
+  $border-color: rgba(255, 255, 255, 0.6);
+
+  display: flex;
+  box-sizing: border-box;
+  border: 2px solid $border-color;
+  border-radius: 100px;
+  height: 80px;
+  align-items: center;
+  position: relative;
+
+  & + & {
+    margin-top: 24px;
+  }
+
+  --no_of_options: 1;  
+
+  &:before {
+    position: absolute;
+    border-radius: 100px;
+    background-color: $border-color;
+    width: calc(100% / var(--no_of_options));
+    height: 100%;
+    z-index: 0;
+    left:0;
+    @include mixins.transition(left);
+  }
+
+  // Catering for multiple options up to the maximum options set
+  $max-options: 5;
+  @for $i from 0 through $max-options {
+    &[data-count="#{$i}"] { --no_of_options: #{$i}; }
+
+    &--#{$i} {
+      &:before {
+        content:"";
+        left: calc(100% / var(--no_of_options) * #{$i});
+      }
+    }
+  } 
+
+  &__option {
+    max-width: 450px;
+    width: 50%;
+    padding: 4px 8px;
+    z-index:1;
+    @include mixins.transition(color);
+    cursor: pointer;
+
+    &--selected {
+      color: #9F938B;
+      pointer-events: none;
+    }
+  }
+
+  @media screen and (max-width: 320px){
+    flex-direction: column;
+    border-radius: 24px ;
+    height: calc(48px * var(--no_of_options));
+    justify-content: space-evenly;
+
+    &:before {
+      position: absolute;
+      // border-radius: 22px 22px 0 0;
+      background-color: $border-color;
+      width: 100%;
+      height: calc(100% / var(--no_of_options));
+      z-index: 0;
+      left:0;
+      top:0;
+      @include mixins.transition(all);
+    }
+
+    // Catering for multiple options up to the maximum options set
+    $max-options: 5;
+    @for $i from 0 through $max-options {
+      &[data-count="#{$i}"] { --no_of_options: #{$i}; }
+
+      &--#{$i} {
+        &:before {
+          $border-radius: 20px;
+          content:"";
+          left: 0;
+          top: calc(100% / var(--no_of_options) * #{$i});
+          //setting border according to the selected position
+          @if $i == 0 {
+            border-radius: $border-radius $border-radius 0 0;
+          } @else {
+            --floor: calc((#{$i + 1} / var(--no_of_options)) - 0.5);
+            $border-radius-calc: calc(#{$border-radius} * var(--floor)); 
+            border-radius: 0 0 $border-radius-calc $border-radius-calc;
+          }
+        }
+      }
+    } 
+    &__option {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,3 @@
+@mixin transition ($attr, $dur:150ms) {
+  transition: $attr $dur ease-in-out;
+}
