@@ -10,12 +10,21 @@
   $border-color: rgba(255, 255, 255, 0.6);
 
   display: flex;
+  align-items: stretch;
+  align-content: stretch;
   box-sizing: border-box;
   border: 2px solid $border-color;
   border-radius: 100px;
   min-height: 80px;
   align-items: center;
   position: relative;
+
+  button {
+    background: none;
+    border: none;
+    font: inherit;
+    color: inherit;
+  }
 
   & + & {
     margin-top: 24px;

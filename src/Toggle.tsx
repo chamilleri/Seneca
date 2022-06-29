@@ -18,7 +18,7 @@ export const Toggle = ({ options, onOptionSelected }: ToggleProps) => {
       data-count={options.length}
     >
       {options.map((option, i) => (
-        <div
+        <button
           key={option + i}
           className={classNames("toggle__option", {
             "toggle__cell--selected": selected === option
@@ -29,7 +29,7 @@ export const Toggle = ({ options, onOptionSelected }: ToggleProps) => {
           }}
         >
           {option}
-        </div>
+        </button>
       ))}
     </div>
   );
