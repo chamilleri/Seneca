@@ -4,8 +4,8 @@ import { useState } from "react";
 import "./Toggle.scss";
 
 type ToggleProps = {
-  options: [string];
-  onOptionSelected: (option) => void;
+  options: string[];
+  onOptionSelected: (option: string) => void;
 };
 
 export const Toggle = ({ options, onOptionSelected }: ToggleProps) => {
@@ -13,7 +13,7 @@ export const Toggle = ({ options, onOptionSelected }: ToggleProps) => {
   return (
     <div
       className={classNames("toggle", {
-        [`toggle--${options.indexOf(selected)}`]: selected
+        [`toggle--${options.indexOf(selected || "")}`]: selected
       })}
       data-count={options.length}
     >
