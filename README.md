@@ -1,4 +1,16 @@
-# Seneca Tech Task
+# Quiz app as per design
+
+## Requirements:
+
+- UI should follow the Figma design
+- The component should be responsive down to 320px
+- The solution should lock once the correct answer is reached so the toggles can no longer be switched
+- Ignore the navbar or footer just the toggles component itself
+- The toggles should animate between the two states as video example
+- The background color should change in proportion to how "correct" the answer is (see video attached)
+- The component should be reusable & extendable, it should be able to accomodate the question changing
+- The solution should be able to accomodate answers with both two and three toggle positions in the answers
+- It should be easy to switch between the active question
 
 ## Design clarifications:
 
